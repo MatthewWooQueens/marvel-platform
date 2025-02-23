@@ -13,6 +13,7 @@ import PrimaryDatePickerInput from '@/components/PrimaryDatePickerInput';
 import PrimaryFileUpload from '@/components/PrimaryFileUpload';
 import PrimarySelectorInput from '@/components/PrimarySelectorInput';
 import PrimaryTextFieldInput from '@/components/PrimaryTextFieldInput';
+import TextFileInput from '@/components/TextFileInput/TextFileInput';
 
 import styles from './styles';
 
@@ -60,9 +61,10 @@ const ToolRequestForm = (props) => {
       const fileInputs = inputs.filter(
         (input) =>
           input.type === INPUT_TYPES.FILE ||
-          input.type === INPUT_TYPES.FILE_TYPE_SELECTOR
+          input.type === INPUT_TYPES.FILE_TYPE_SELECTOR ||
+          input.type === INPUT_TYPES.TEXT_FILE_INPUT
       );
-
+      console.log(fileInputs)
       // Replace for...of loop with Promise.all and map
       const fileUploadPromises = fileInputs.map(async (input) => {
         const fileKey =
@@ -425,6 +427,8 @@ const ToolRequestForm = (props) => {
         return renderFileTypeSelectorInput(inputProps);
       case INPUT_TYPES.DATE:
         return renderDateInput(inputProps);
+      case INPUT_TYPES.TEXT_FILE_INPUT:
+        return renderTextFileInput(inputProps);
       default:
         return null;
     }

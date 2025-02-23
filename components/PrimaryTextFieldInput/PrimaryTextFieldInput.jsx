@@ -48,11 +48,11 @@ const PrimaryTextFieldInput = forwardRef((props, ref) => {
   };
 
   return (
-    <TextFieldElement
-      inputRef={ref}
-      {...TextFieldElementConfig}
-      {...otherProps}
-    />
+      <TextFieldElement
+        inputRef={ref}
+        {...TextFieldElementConfig}
+        {...otherProps}
+      />
   );
 });
 

@@ -1729,5 +1729,23 @@
     ],
     "logo": "https://firebasestorage.googleapis.com/v0/b/kai-ai-f63c8.appspot.com/o/YoutubeLogo.png?alt=media&token=2809083f-f816-41b6-8f86-80582b3da188",
     "name": "Writing Feedback Generator"
+  },
+  "text-rewriter-generator":{
+    "backgroundImgURL": "https://firebasestorage.googleapis.com/v0/b/kai-ai-f63c8.appspot.com/o/Dynamo.png?alt=media&token=db14183f-a294-49b2-a9de-0818b007c080",
+    "description":"test",
+    "id":"text-rewriter-generator",
+    "inputs":[
+      {"label":"",
+      "name":"Text Rewriter",
+      "placeholder":"Text or Input file",
+      "type": "text_file_input"
+      },
+      {"label": "How would you like to rewrite this?",
+      "name":"rewrite",
+      "placeholder": "Rewrite this text so that it sounds more professional",
+      "type":"text"}
+    ],
+    "logo": "https://firebasestorage.googleapis.com/v0/b/kai-ai-f63c8.appspot.com/o/YoutubeLogo.png?alt=media&token=2809083f-f816-41b6-8f86-80582b3da188",
+    "name": "Text Rewriter"
   }
 }
