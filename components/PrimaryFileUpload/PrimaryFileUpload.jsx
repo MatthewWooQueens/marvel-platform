@@ -110,7 +110,6 @@ const PrimaryFileUpload = forwardRef((props, ref) => {
       </IconButton>
     );
   };
-
   return (
     <>
       {renderLabel()}

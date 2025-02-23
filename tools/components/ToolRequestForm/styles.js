@@ -53,6 +53,12 @@ const styles = {
     alignItems: 'center',
     rowGap: 4,
   },
+  textFileGridProps: {
+    container:true,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+  },
+
   labelProps: (error) => ({
     color: (theme) => (error ? theme.palette.error.main : 'inherit'),
     fontSize: { laptop: '24px', desktop: '26px' },

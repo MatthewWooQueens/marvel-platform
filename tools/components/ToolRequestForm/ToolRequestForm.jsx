@@ -13,6 +13,7 @@ import PrimaryDatePickerInput from '@/components/PrimaryDatePickerInput';
 import PrimaryFileUpload from '@/components/PrimaryFileUpload';
 import PrimarySelectorInput from '@/components/PrimarySelectorInput';
 import PrimaryTextFieldInput from '@/components/PrimaryTextFieldInput';
+import TextFileInput from '@/components/TextFileInput/TextFileInput';
 
 import styles from './styles';
 
@@ -67,14 +68,15 @@ const ToolRequestForm = (props) => {
         }
         return { name, value };
       });
-
+      console.log(inputs)
       const fileUrls = [];
       const fileInputs = inputs.filter(
         (input) =>
           input.type === INPUT_TYPES.FILE ||
-          input.type === INPUT_TYPES.FILE_TYPE_SELECTOR
+          input.type === INPUT_TYPES.FILE_TYPE_SELECTOR ||
+          input.type === INPUT_TYPES.TEXT_FILE_INPUT
       );
-
+      console.log(fileInputs)
       // Replace for...of loop with Promise.all and map
       const fileUploadPromises = fileInputs.map(async (input) => {
         // omit previous values
@@ -84,10 +86,13 @@ const ToolRequestForm = (props) => {
             item.name !== `${input.name}_url` &&
             item.name !== input.name
         );
+        console.log(input.name)
+        console.log(values)
         updateData.push({
           name: `${input.name}_type`,
           value: values[`${input.name}`].toLowerCase(),
         });
+        console.log(updateData)
 
         const fileKey =
           input.type === INPUT_TYPES.FILE_TYPE_SELECTOR
@@ -368,6 +373,29 @@ const ToolRequestForm = (props) => {
     </Grid>
   );
 
+  const renderTextFileInput = (inputProps) => {
+    const {name,label,placeholder} = inputProps;
+    return (
+      <Grid {...styles.textFileGridProps}>
+        <TextFileInput
+          id='textFileInput'
+          name={name}
+          label={label}
+          description=''
+          placeholder={placeholder}
+          title=''
+          setValue={setValue}
+          ref={register}
+          error={errors?.[name]}
+          control={control}
+          validation={{
+            required: 'Text or files is required',
+          }}
+        />
+      </Grid>
+    )
+  }
+
   const renderInput = (inputProps) => {
     const { condition, type } = inputProps;
 
@@ -390,6 +418,8 @@ const ToolRequestForm = (props) => {
         return renderFileTypeSelectorInput(inputProps);
       case INPUT_TYPES.DATE:
         return renderDateInput(inputProps);
+      case INPUT_TYPES.TEXT_FILE_INPUT:
+        return renderTextFileInput(inputProps);
       default:
         return null;
     }
